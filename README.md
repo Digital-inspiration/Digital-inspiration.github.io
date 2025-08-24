@@ -1,4 +1,4 @@
-- 👋 Hi, I’m Pri 
+- 👋 Hi, I’m Priya 
 - 👀 I’m interested in AI, Python, Web3, blockchain
 - 🌱 I’m currently learning Mistral
 - 💞️ I’m looking to collaborate on Python, AI
