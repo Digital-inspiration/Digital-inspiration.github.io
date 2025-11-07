@@ -1,6 +1,6 @@
 - 👋 Hi, I’m Priya 
 - 👀 I’m interested in AI, Python, Web3, blockchain
-- 🌱 I’m currently learning Mistral
+- 🌱 I’m currently learning to build AI agents using Llama3.2 and other LLMs
 - 💞️ I’m looking to collaborate on Python, AI
 - 📫 How to reach me digitally.inspires@gmail.com
 - 😄 Pronouns: She/Her
