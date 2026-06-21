@@ -104,7 +104,7 @@
   .about-card {
     background: var(--ink); color: #fff; border-radius: 20px;
     padding: 40px; display: flex; flex-direction: column; gap: 24px;
-    width: 100%; text-align: left; font: inherit; border: 0; cursor: pointer;
+    width: 100%; text-align: left; font: inherit; border: 0; cursor: pointer; text-decoration: none;
     position: relative; transition: transform .25s ease, box-shadow .25s ease;
   }
   .about-card:hover { transform: translateY(-4px); box-shadow: 0 28px 56px rgba(17,19,23,.22); }
@@ -118,30 +118,7 @@
   .card-cta .cta-chevron { width: 30px; height: 30px; flex: none; border-radius: 9px; background: var(--accent);
     display: flex; align-items: center; justify-content: center; font-size: .8rem; transition: transform .35s ease, background .2s; }
   .about-card:hover .card-cta .cta-chevron { background: var(--lime); color: var(--ink); }
-  .about-card[aria-expanded="true"] .cta-chevron { transform: rotate(180deg); }
-  .about-card[aria-expanded="true"] .cta-label::before { content: "Hide "; }
 
-  /* ---------- RESUME (inline expand) ---------- */
-  .resume-panel { overflow: hidden; max-height: 0; opacity: 0; transition: max-height .55s ease, opacity .4s ease, margin-top .4s ease; }
-  .resume-panel.open { max-height: 3200px; opacity: 1; margin-top: 28px; }
-  .resume { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: clamp(28px, 4vw, 52px); }
-  .resume-head { display: flex; justify-content: space-between; gap: 26px; flex-wrap: wrap; padding-bottom: 24px; border-bottom: 2px solid var(--ink); }
-  .resume .r-name { font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
-  .resume .r-title { color: var(--accent-ink); font-weight: 600; font-size: .98rem; margin-top: 6px; }
-  .r-contact { display: flex; flex-direction: column; gap: 4px; font-size: .88rem; color: var(--muted); text-align: right; }
-  .r-contact a { text-decoration: none; }
-  .r-contact a:hover { color: var(--accent); }
-  .resume-body { display: grid; grid-template-columns: 1.7fr 1fr; gap: 44px; margin-top: 28px; }
-  .r-block { margin-bottom: 26px; }
-  .r-block:last-child { margin-bottom: 0; }
-  .r-block h4 { font-family: "Space Grotesk", sans-serif; font-size: .76rem; text-transform: uppercase; letter-spacing: .14em; color: var(--accent-ink); margin-bottom: 12px; padding-bottom: 7px; border-bottom: 1px solid var(--line); }
-  .r-block p { color: var(--muted); font-size: .95rem; }
-  .r-block ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-  .r-main ul li { position: relative; padding-left: 20px; color: #2c2f36; font-size: .95rem; }
-  .r-main ul li::before { content: ""; position: absolute; left: 0; top: 9px; width: 7px; height: 7px; border-radius: 2px; background: var(--accent); }
-  .r-side ul.plain li { color: #2c2f36; font-size: .9rem; }
-  .resume-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
-  @media (max-width: 720px) { .resume-body { grid-template-columns: 1fr; gap: 28px; } .r-contact { text-align: left; } }
 
   /* ---------- WORK (blocks) ---------- */
   #work { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -216,17 +193,6 @@
     .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
   }
 
-  /* ---------- PRINT (resume only) ---------- */
-  @media print {
-    body { background: #fff; }
-    header.nav, footer, .card-cta, .resume-actions { display: none !important; }
-    main > section:not(#about) { display: none !important; }
-    #about { padding: 0 !important; border: 0 !important; }
-    #about .about-grid { display: none !important; }
-    .resume-panel { max-height: none !important; opacity: 1 !important; overflow: visible !important; margin: 0 !important; }
-    .resume { border: 0 !important; padding: 0 !important; }
-    @page { margin: 14mm; }
-  }
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 820px) {
@@ -267,7 +233,7 @@
         </div>
         <div class="who">
           <div class="name">Priyanka Kundu</div>
-          <div class="role"><span class="live"></span>Software / DevOps Engineer · AWS Certified (2021-2024)</div>
+          <div class="role"><span class="live"></span>Software / DevOps Engineer · AWS Certified</div>
         </div>
       </div>
       <div class="stagger" id="heroText">
@@ -298,90 +264,14 @@
           <h2 style="font-size:clamp(1.8rem,4vw,2.9rem); margin:14px 0 18px;">A technical architect who values structure and detail.</h2>
           <p>More than a decade of software engineering experience, with deep expertise in Python, Java, and cloud technologies, and a strong background in CI/CD automation, Agile delivery, and cross-functional team leadership. I've architected automation frameworks that cut deployment cycles by 60% and delivered software across 13+ platforms serving thousands of users — and I keep building, from AI agents to blockchain apps.</p>
         </div>
-        <button class="about-card reveal" id="resumeToggle" type="button" aria-expanded="false" aria-controls="resumePanel">
+        <a class="about-card reveal" href="resume.html">
           <span class="stat"><b data-count="10" data-suffix="+">0</b><span>years engineering experience</span></span>
-          <span class="stat"><b>AWS</b><span>Certified Solutions Architect</span></span>
-          <span class="stat"><b id="statRepos">—</b><span>public projects on GitHub</span></span>
-          <span class="card-cta"><span class="cta-label">View full résumé</span><span class="cta-chevron">⌄</span></span>
-        </button>
+          <span class="stat"><b>AWS</b><span>Certified Solutions Architect (2021–2024)</span></span>
+          <span class="stat"><b>13+</b><span>public projects</span></span>
+          <span class="card-cta"><span class="cta-label">View full résumé</span><span class="cta-chevron">→</span></span>
+        </a>
       </div>
 
-      <!-- RESUME (expands inline) -->
-      <div class="resume-panel" id="resumePanel">
-        <div class="resume" id="resumeDoc">
-          <div class="resume-head">
-            <div>
-              <h3 class="r-name">Priyanka Kundu</h3>
-              <p class="r-title">Software / DevOps Engineer · AWS Solutions Architect</p>
-            </div>
-            <div class="r-contact">
-              <span>Adelaide, South Australia</span>
-              <a href="mailto:17.priyanka.k@gmail.com">17.priyanka.k@gmail.com</a>
-              <a href="https://www.linkedin.com/in/priyanka-kundu-" target="_blank" rel="noopener">linkedin.com/in/priyanka-kundu-</a>
-              <a href="https://github.com/Digital-inspiration" target="_blank" rel="noopener">github.com/Digital-inspiration</a>
-            </div>
-          </div>
-
-          <div class="resume-body">
-            <div class="r-main">
-              <section class="r-block">
-                <h4>Summary</h4>
-                <p>Software / DevOps engineer with a decade-plus building scalable enterprise software across Python, Java, and the cloud. Strong background in CI/CD automation, Agile delivery, and cross-functional team leadership — paired with hands-on side projects in React, Flutter, AI, and blockchain.</p>
-              </section>
-
-              <section class="r-block">
-                <h4>Selected experience &amp; impact</h4>
-                <ul>
-                  <li>10+ years engineering enterprise software across Python, Java, Kotlin, and cloud platforms.</li>
-                  <li>Architected automation frameworks that cut deployment cycles by <strong>60%</strong>.</li>
-                  <li>Delivered software across <strong>13+ platforms</strong> serving thousands of users.</li>
-                  <li>Built and maintained CI/CD pipelines with TeamCity, SonarQube, and config-as-code.</li>
-                  <li>Led cross-functional teams through Agile / Scrum and SAFe delivery.</li>
-                  <li>Shipped side projects spanning React web apps, Flutter mobile, AI agents (LangChain / Crew AI), and Solidity smart contracts.</li>
-                </ul>
-              </section>
-
-              <section class="r-block">
-                <h4>Expertise</h4>
-                <ul>
-                  <li><strong>Software architecture</strong> — scalable, modular systems and cross-platform solutions built to last across 13+ environments.</li>
-                  <li><strong>DevOps &amp; CI/CD</strong> — automation frameworks and TeamCity pipelines with config-as-code.</li>
-                  <li><strong>Cloud (AWS)</strong> — Certified Solutions Architect building reliable cloud infrastructure.</li>
-                  <li><strong>Full-stack &amp; mobile</strong> — React, Flutter, and AI- and blockchain-powered applications, end to end.</li>
-                </ul>
-              </section>
-            </div>
-
-            <aside class="r-side">
-              <section class="r-block">
-                <h4>Certifications</h4>
-                <ul class="plain"><li>AWS Certified Solutions Architect</li></ul>
-              </section>
-              <section class="r-block">
-                <h4>Languages</h4>
-                <ul class="plain"><li>Python · Java · Kotlin</li><li>JavaScript · ReactJS</li><li>Dart / Flutter · Solidity</li></ul>
-              </section>
-              <section class="r-block">
-                <h4>Cloud &amp; DevOps</h4>
-                <ul class="plain"><li>AWS · CI/CD pipelines</li><li>TeamCity · SonarQube · Node.js</li></ul>
-              </section>
-              <section class="r-block">
-                <h4>Tools &amp; practices</h4>
-                <ul class="plain"><li>Git / GitHub · Jira</li><li>Agile / Scrum · SAFe</li><li>IntelliJ · VS Code</li></ul>
-              </section>
-              <section class="r-block">
-                <h4>APIs, data &amp; quality</h4>
-                <ul class="plain"><li>RESTful APIs · SQL</li><li>XML / JSON · TDD</li><li>Automated &amp; unit testing</li></ul>
-              </section>
-            </aside>
-          </div>
-        </div>
-
-        <div class="resume-actions">
-          <button class="btn accent" type="button" id="downloadResume">Download PDF</button>
-          <button class="btn ghost" type="button" id="collapseResume">Close résumé</button>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -417,7 +307,7 @@
       <div class="skills-grid">
         <div class="skill-group reveal">
           <h4>Programming Languages</h4>
-          <ul class="tags"><li>Python</li><li>Java</li><li>Kotlin</li><li>JavaScript</li><li>ReactJS</li><li>Dart / Flutter</li><li>Solidity</li></ul>
+          <ul class="tags"><li>Python</li><li>Java</li><li>Kotlin</li><li>JavaScript</li><li>TypeScript</li><li>ReactJS</li><li>Dart / Flutter</li><li>Solidity</li></ul>
         </div>
         <div class="skill-group reveal">
           <h4>Cloud &amp; DevOps</h4>
@@ -425,11 +315,11 @@
         </div>
         <div class="skill-group reveal">
           <h4>Tools &amp; Practices</h4>
-          <ul class="tags"><li>Git / GitHub</li><li>IntelliJ</li><li>VS Code</li><li>Agile / Scrum</li><li>SAFe</li><li>Jira</li></ul>
+          <ul class="tags"><li>Git / GitHub</li><li>Cursor</li><li>IntelliJ</li><li>VS Code</li><li>Agile / Scrum</li><li>SAFe</li><li>Jira</li></ul>
         </div>
         <div class="skill-group reveal">
           <h4>APIs, Data &amp; Quality</h4>
-          <ul class="tags"><li>RESTful APIs</li><li>XML / JSON</li><li>SQL</li><li>Automated &amp; Unit Testing</li><li>TDD</li><li>LangChain / Crew AI</li></ul>
+          <ul class="tags"><li>RESTful APIs</li><li>XML / JSON</li><li>SQL</li><li>Playwright</li><li>Automated &amp; Unit Testing</li><li>TDD</li><li>LangChain / Crew AI</li></ul>
         </div>
       </div>
     </div>
@@ -448,7 +338,7 @@
       <div class="exp-grid reveal">
         <div class="exp"><div class="ic">{ }</div><h3>Software Architecture</h3><p>Designing scalable, modular systems and cross-platform solutions built to last across 13+ environments.</p></div>
         <div class="exp"><div class="ic">⇄</div><h3>DevOps &amp; CI/CD</h3><p>Automation frameworks and TeamCity pipelines with config-as-code — cutting deployment cycles by 60%.</p></div>
-        <div class="exp"><div class="ic">☁</div><h3>Cloud (AWS)</h3><p>AWS Certified Solutions Architect, building and supporting reliable cloud infrastructure.</p></div>
+        <div class="exp"><div class="ic">☁</div><h3>Cloud (AWS)</h3><p>AWS Certified Solutions Architect (2021–2024), building and supporting reliable cloud infrastructure.</p></div>
         <div class="exp"><div class="ic">▦</div><h3>Full-Stack &amp; Mobile</h3><p>React web apps, Flutter mobile, and AI- and blockchain-powered side projects, end to end.</p></div>
       </div>
     </div>
@@ -538,7 +428,6 @@
       let repos = await res.json();
       repos = repos.filter(r => !r.fork && r.name.toLowerCase() !== `${USERNAME.toLowerCase()}.github.io`);
       allRepos = repos;
-      updateStats(repos);
       stateEl.textContent = "";
       render(repos);                 // show cards immediately (primary language)
       enrichLanguages(repos);        // then fetch full language mix per repo and refine
@@ -561,10 +450,6 @@
       } catch (_) { /* keep primary language on failure */ }
     }));
     render(allRepos);                                  // refine cards with full language mix
-  }
-
-  function updateStats(repos) {
-    document.getElementById("statRepos").textContent = repos.length;
   }
 
   function render(repos) {
@@ -674,16 +559,6 @@
     });
   }
 
-  /* ---------- Résumé expand + PDF ---------- */
-  const resumeToggle = document.getElementById("resumeToggle");
-  const resumePanel = document.getElementById("resumePanel");
-  function setResume(open) {
-    resumePanel.classList.toggle("open", open);
-    resumeToggle.setAttribute("aria-expanded", open ? "true" : "false");
-  }
-  resumeToggle.addEventListener("click", () => setResume(!resumePanel.classList.contains("open")));
-  document.getElementById("collapseResume").addEventListener("click", () => setResume(false));
-  document.getElementById("downloadResume").addEventListener("click", () => { setResume(true); setTimeout(() => window.print(), 250); });
 
   load();
 </script>

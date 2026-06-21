@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priyanka Kundu — Résumé</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbf6f0;          /* warm cream */
+    --paper: #fffdfb;
+    --ink: #2a2420;         /* warm near-black */
+    --muted: #7c726a;       /* warm grey */
+    --line: #efe6da;
+    --accent: #e0613c;      /* warm coral */
+    --accent-ink: #c44a28;
+    --gold: #f0a85c;        /* soft amber */
+    --mint: #eef6ef;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Inter", system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3,h4 { font-family: "Space Grotesk", system-ui, sans-serif; letter-spacing: -.01em; line-height: 1.12; }
+  a { color: var(--accent-ink); }
+  .wrap { width: min(980px, 92vw); margin: 0 auto; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 9px; text-transform: uppercase; letter-spacing: .15em; font-size: .72rem; color: var(--accent-ink); font-weight: 600; }
+  .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--accent); border-radius: 2px; }
+
+  /* top bar */
+  .topbar { padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .back { text-decoration: none; color: var(--muted); font-size: .92rem; display: inline-flex; align-items: center; gap: 8px; }
+  .back:hover { color: var(--ink); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 999px; background: var(--accent); color: #fff; text-decoration: none; font-size: .88rem; font-weight: 600; border: 0; cursor: pointer; transition: transform .2s, background .2s; }
+  .btn:hover { transform: translateY(-2px); background: var(--accent-ink); }
+
+  /* hero */
+  .hero { background: var(--paper); border: 1px solid var(--line); border-radius: 28px; padding: clamp(28px, 4vw, 52px); box-shadow: 0 30px 60px rgba(224,97,60,.07); }
+  .hero-top { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .avatar { width: 96px; height: 96px; border-radius: 24px; flex: none; display: flex; align-items: center; justify-content: center; color: #fff;
+    background: linear-gradient(150deg, var(--accent) 0%, var(--gold) 100%); box-shadow: 0 14px 30px rgba(224,97,60,.32);
+    font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 2.1rem; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.1rem); font-weight: 600; }
+  .hero .role { color: var(--accent-ink); font-weight: 600; margin-top: 6px; }
+  .hero .hello { color: var(--muted); font-weight: 500; font-size: .95rem; margin-bottom: 4px; }
+  .lead { font-size: clamp(1.05rem, 2vw, 1.2rem); color: #4a423c; margin-top: 24px; max-width: 60ch; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 8px 15px; font-size: .85rem; color: var(--ink); text-decoration: none; transition: border-color .2s, transform .2s; }
+  .chip:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .chip b { color: var(--accent-ink); font-weight: 600; }
+
+  /* sections */
+  section.block { margin-top: 56px; }
+  .sec-head { margin-bottom: 26px; }
+  .sec-head h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-top: 10px; }
+  .sec-head .intro { color: var(--muted); margin-top: 8px; font-size: 1rem; }
+
+  /* timeline (experience) */
+  .timeline { position: relative; padding-left: 30px; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(var(--accent), var(--gold)); border-radius: 2px; }
+  .job { position: relative; margin-bottom: 34px; }
+  .job:last-child { margin-bottom: 0; }
+  .job::before { content: ""; position: absolute; left: -30px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: var(--paper); border: 3px solid var(--accent); }
+  .job .co { font-family: "Space Grotesk", sans-serif; font-size: 1.25rem; font-weight: 600; }
+  .job .loc { color: var(--muted); font-size: .9rem; }
+  .roles { display: flex; flex-direction: column; gap: 2px; margin: 10px 0 4px; }
+  .roles .r { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; font-size: .92rem; }
+  .roles .r .t { font-weight: 600; }
+  .roles .r .d { color: var(--accent-ink); font-weight: 500; white-space: nowrap; }
+  .client { font-size: .9rem; color: var(--muted); font-style: italic; margin-bottom: 10px; }
+  .job ul { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-top: 12px; }
+  .job ul li { position: relative; padding-left: 22px; color: #4a423c; font-size: .95rem; }
+  .job ul li::before { content: ""; position: absolute; left: 0; top: 10px; width: 7px; height: 7px; border-radius: 2px; background: var(--gold); }
+
+  /* cards (projects) */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+  .pcard { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 26px; transition: transform .2s, box-shadow .2s, border-color .2s; }
+  .pcard:hover { transform: translateY(-4px); box-shadow: 0 24px 46px rgba(224,97,60,.12); border-color: var(--accent); }
+  .pcard h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .pcard p { color: var(--muted); font-size: .92rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .tags span { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px; font-size: .74rem; font-weight: 500; color: var(--accent-ink); }
+
+  /* skills */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; }
+  .skill-group { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; }
+  .skill-group h4 { font-size: .74rem; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-ink); margin-bottom: 12px; }
+  .skill-group .list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-group .list span { font-size: .86rem; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 5px 11px; }
+
+  /* two-up (education / awards / volunteer) */
+  .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 26px 28px; }
+  .panel + .panel { margin-top: 16px; }
+  .edu-item, .award, .vol { padding: 12px 0; border-bottom: 1px dashed var(--line); }
+  .edu-item:last-child, .award:last-child, .vol:last-child { border-bottom: 0; padding-bottom: 0; }
+  .edu-item:first-child, .award:first-child, .vol:first-child { padding-top: 0; }
+  .edu-item h4, .vol h4 { font-size: 1.02rem; margin-bottom: 3px; }
+  .edu-item .meta { color: var(--accent-ink); font-size: .85rem; font-weight: 500; }
+  .edu-item p, .vol p, .award p { color: var(--muted); font-size: .92rem; margin-top: 4px; }
+  .award .when { display: inline-block; font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: .82rem; color: #fff; background: var(--accent); border-radius: 999px; padding: 2px 12px; margin-right: 8px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+
+  /* closing CTA */
+  .closing { text-align: center; background: var(--ink); color: #fff; border-radius: 24px; padding: clamp(40px, 6vw, 64px) 24px; margin: 56px 0 70px; }
+  .closing h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 10px; }
+  .closing p { color: rgba(255,255,255,.7); margin-bottom: 26px; }
+  .closing .btn { background: var(--gold); color: var(--ink); }
+  .closing .btn:hover { background: #fff; }
+
+  @media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* print → dense, ~2-page PDF */
+  @media print {
+    body { background: #fff; font-size: 9pt; line-height: 1.32; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @page { margin: 10mm; }
+    .wrap { width: 100%; }
+    .topbar, .closing { display: none !important; }
+    .hero, .pcard, .skill-group, .panel { box-shadow: none !important; }
+
+    /* drop screen-only flourishes to reclaim vertical space */
+    .eyebrow, .sec-head .intro, .hello { display: none !important; }
+
+    /* compact header */
+    .hero { border: 0; border-bottom: 2px solid var(--ink); border-radius: 0; padding: 0 0 10px; }
+    .hero-top { gap: 14px; }
+    .avatar { width: 52px; height: 52px; border-radius: 10px; font-size: 1.2rem; }
+    .hero h1 { font-size: 1.5rem; }
+    .hero .role { font-size: .9rem; margin-top: 2px; }
+    .lead { margin-top: 8px; font-size: .85rem; max-width: none; }
+    .chips { margin-top: 8px; gap: 5px; }
+    .chip { padding: 3px 9px; font-size: .72rem; border-radius: 6px; }
+
+    /* compact sections */
+    section.block { margin-top: 12px; }
+    .sec-head { margin-bottom: 6px; }
+    .sec-head h2 { font-size: 1.05rem; }
+
+    /* experience */
+    .timeline { padding-left: 18px; }
+    .timeline::before { left: 5px; }
+    .job { margin-bottom: 9px; break-inside: avoid; }
+    .job::before { left: -18px; width: 11px; height: 11px; border-width: 2px; top: 4px; }
+    .job .co { font-size: 1rem; }
+    .job .loc { font-size: .78rem; }
+    .roles { margin: 5px 0 2px; }
+    .roles .r { font-size: .82rem; }
+    .job ul { margin-top: 5px; gap: 3px; }
+    .job ul li { font-size: .82rem; padding-left: 15px; }
+    .job ul li::before { top: 7px; width: 5px; height: 5px; }
+    .client { margin-bottom: 5px; font-size: .8rem; }
+
+    /* projects: 3-up, tight */
+    .cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .pcard { padding: 12px; break-inside: avoid; }
+    .pcard h3 { font-size: .95rem; }
+    .pcard p { font-size: .78rem; }
+    .tags { margin-top: 8px; gap: 5px; }
+    .tags span { font-size: .68rem; padding: 2px 8px; }
+
+    /* skills: 3-up, tight */
+    .skills-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .skill-group { padding: 12px 14px; break-inside: avoid; }
+    .skill-group .list span { font-size: .76rem; padding: 3px 8px; }
+
+    /* education / awards / volunteering */
+    .panel { padding: 12px 16px; break-inside: avoid; }
+    .two-col { gap: 12px; }
+    .edu-item, .award, .vol { padding: 5px 0; }
+    .edu-item p, .vol p, .award p { font-size: .8rem; }
+    .award .when { font-size: .72rem; padding: 1px 9px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap topbar">
+    <a class="back" href="index.html">← Back to portfolio</a>
+    <button class="btn" id="printBtn" type="button">Download PDF</button>
+  </div>
+
+  <div class="wrap">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-top">
+        <div class="avatar">PK</div>
+        <div>
+          <div class="hello">Hello, I'm</div>
+          <h1>Priyanka Kundu</h1>
+          <div class="role">Software / DevOps Engineer · AWS Certified Solutions Architect (2021–2024)</div>
+        </div>
+      </div>
+      <p class="lead">I'm passionate about designing, developing, and deploying scalable software solutions using Agile
+        methodologies and building frameworks that make teams faster. More than a decade of software engineering
+        experience, with proven expertise in Python, Java, and cloud technologies, a strong background in CI/CD automation,
+        and a track record of reducing deployment cycles by 60% while delivering high-quality software to thousands of users.</p>
+      <div class="chips">
+        <a class="chip" href="mailto:17.priyanka.k@gmail.com"><b>Email</b> 17.priyanka.k@gmail.com</a>
+        <a class="chip" href="tel:+61417525465"><b>Phone</b> (+61) 417 525 465</a>
+        <span class="chip"><b>Location</b> Adelaide, South Australia</span>
+        <a class="chip" href="https://www.linkedin.com/in/priyanka-kundu-" target="_blank" rel="noopener"><b>LinkedIn</b> @priyanka-kundu-</a>
+        <a class="chip" href="https://github.com/Digital-inspiration" target="_blank" rel="noopener"><b>GitHub</b> Digital-inspiration</a>
+      </div>
+    </header>
+
+    <!-- EXPERIENCE -->
+    <section class="block">
+      <div class="sec-head">
+        <span class="eyebrow">The journey so far</span>
+        <h2>Where I've worked</h2>
+        <p class="intro">A decade of building, shipping, and leading across enterprise software teams.</p>
+      </div>
+      <div class="timeline">
+
+        <div class="job">
+          <div class="co">Splose</div>
+          <div class="loc">Adelaide, South Australia</div>
+          <div class="roles">
+            <div class="r"><span class="t">Senior QA Automation Engineer</span><span class="d">Mar 2026 – Present</span></div>
+          </div>
+          <ul>
+            <li>Set up CI/CD integration where none previously existed, bringing automated build and test pipelines to the team.</li>
+            <li>Improved reporting by introducing external reporting tools to gather insights and surface historical trends.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="co">GovHack</div>
+          <div class="loc">Australia · Remote</div>
+          <div class="roles">
+            <div class="r"><span class="t">AWS Specialist</span><span class="d">Jun 2025 – Mar 2026</span></div>
+          </div>
+          <ul>
+            <li>Maintained AWS infrastructure and built a WordPress website for the organisation.</li>
+            <li>Led a remote team to successful delivery.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="co">Career break &amp; community volunteer</div>
+          <div class="loc">Adelaide, South Australia</div>
+          <div class="roles">
+            <div class="r"><span class="t">Relocation to Australia &amp; family focus</span><span class="d">Apr 2021 – Jun 2025</span></div>
+          </div>
+          <ul>
+            <li>Intentionally paused my professional career to focus on raising my young family.</li>
+            <li>Volunteered with the local community — instructed and supported primary-school students during outdoor sports, hiking, and team challenges, helping resolve conflicts and encouraging teamwork.</li>
+            <li>Completed my AWS certification.</li>
+            <li>Stayed relevant with technology by building hands-on projects across React, Node.js, Crew AI, Blockchain, and Flutter.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="co">Progress Software</div>
+          <div class="loc">Hyderabad, India</div>
+          <div class="roles">
+            <div class="r"><span class="t">Principal Software Engineer</span><span class="d">Aug 2018 – Mar 2021</span></div>
+            <div class="r"><span class="t">Senior Software Engineer I &amp; II</span><span class="d">Jan 2012 – Aug 2018</span></div>
+            <div class="r"><span class="t">Software Engineer</span><span class="d">Jan 2011 – Jan 2012</span></div>
+          </div>
+          <ul>
+            <li>Led the end-to-end software development lifecycle for enterprise database connectivity solutions serving thousands of users across 13+ platforms including Windows, Linux, macOS, and Cloud environments.</li>
+            <li>Architected a Python automation framework integrated with TeamCity CI/CD pipelines, reducing deployment cycle time from 10 days to 4 days (60% improvement) and eliminating manual testing bottlenecks.</li>
+            <li>Designed and implemented a Suite Installer solution enabling dynamic software deployment with modularized architecture, improving long-term maintainability and rapid deployment.</li>
+            <li>Integrated Telerik Analytics APIs into Java applications, implementing RESTful services for real-time data collection and customer behaviour tracking, contributing to target-based sales achievements.</li>
+            <li>Served as Scrum Master for a 6-member development team — facilitating sprint planning, retrospectives, and cross-team coordination to deliver features across six product lines on schedule.</li>
+            <li>Implemented comprehensive CI/CD pipelines using TeamCity with Kotlin DSL configuration-as-code, automating build, test, and deployment across multiple environments.</li>
+            <li>Established code quality standards through SonarQube integration — monitoring coverage, identifying critical vulnerabilities, and reducing technical debt across the codebase.</li>
+            <li>Collaborated with UX design teams to incorporate customer feedback and ensure a seamless experience across multi-platform applications.</li>
+            <li>Developed an XML-based plugin architecture for system registry management, providing a cross-platform alternative to the Windows Registry for Unix and Windows environments.</li>
+            <li>Mentored and trained new developers, contributing to recruitment processes and knowledge-transfer initiatives.</li>
+            <li>Delivered critical hotfixes and service packs through collaboration with multiple product teams, ensuring rapid turnaround for customer-specific requirements.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="co">Infosys</div>
+          <div class="loc">Bangalore, India</div>
+          <div class="roles">
+            <div class="r"><span class="t">Senior Software Engineer</span><span class="d">Oct 2007 – Jan 2011</span></div>
+          </div>
+          <div class="client">Client: Global Mining &amp; Exploration Corporation</div>
+          <ul>
+            <li>Customized ProSource enterprise E&amp;P data management and delivery system enhancements — creating requirement specifications and implementing features for distributed repository management.</li>
+            <li>Customized application interfaces to support multiple data types across exploration and production organization workflows.</li>
+            <li>Administered Unix systems for 60+ users, automating repetitive tasks using shell scripting and reducing manual operations by 80%.</li>
+            <li>Collaborated with external vendors and clients to determine technical specifications and provide feasibility analysis for various implementation options.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- KEY PROJECTS -->
+    <section class="block">
+      <div class="sec-head">
+        <span class="eyebrow">Signature work</span>
+        <h2>Key projects</h2>
+        <p class="intro">A few of the things I'm proudest to have architected and shipped.</p>
+      </div>
+      <div class="cards">
+        <div class="pcard">
+          <h3>Enterprise Analytics Integration</h3>
+          <p>Integrated Telerik Analytics APIs into Java applications, implementing RESTful services for real-time data collection and reporting dashboard functionality.</p>
+          <div class="tags"><span>Java</span><span>RESTful APIs</span><span>Analytics</span></div>
+        </div>
+        <div class="pcard">
+          <h3>Multi-Platform Deployment System</h3>
+          <p>Designed an automated deployment solution using Python and shell scripting, supporting Windows, Unix, macOS, and Cloud environments — with a 60% cycle-time reduction.</p>
+          <div class="tags"><span>Python</span><span>Shell</span><span>CI/CD</span></div>
+        </div>
+        <div class="pcard">
+          <h3>Cross-Platform Application Suite</h3>
+          <p>Architected a modular software suite enabling rapid deployment of database connectivity solutions across 13+ platforms with centralized configuration management.</p>
+          <div class="tags"><span>Architecture</span><span>Cross-platform</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSONAL PROJECTS -->
+    <section class="block">
+      <div class="sec-head">
+        <span class="eyebrow">For the joy of it</span>
+        <h2>Things I've built for fun</h2>
+        <p class="intro">Side projects where I get to play with new tech — all on my GitHub.</p>
+      </div>
+      <div class="cards">
+        <div class="pcard">
+          <h3>Movie Explorer</h3>
+          <p>A responsive movie discovery app that lets users search movies, view details, and mark favorites using the TMDB API.</p>
+          <div class="tags"><span>ReactJS</span><span>TMDB API</span></div>
+        </div>
+        <div class="pcard">
+          <h3>Trip Planner with Crew AI</h3>
+          <p>An AI-powered itinerary planner generating daily travel schedules, budgets, activities, safety tips, and packing lists.</p>
+          <div class="tags"><span>Python</span><span>Crew AI</span><span>LangChain</span><span>OpenAI</span></div>
+        </div>
+        <div class="pcard">
+          <h3>Namer App</h3>
+          <p>A fun mobile app that generates creative usernames from random English word combinations, with swipe-to-save.</p>
+          <div class="tags"><span>Flutter</span><span>Dart</span></div>
+        </div>
+        <div class="pcard">
+          <h3>Buy Me a Chai</h3>
+          <p>A blockchain-based tipping platform — letting supporters send a little appreciation, on-chain.</p>
+          <div class="tags"><span>ReactJS</span><span>Hardhat</span><span>Ethers.js</span><span>Solidity</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="block">
+      <div class="sec-head">
+        <span class="eyebrow">My toolkit</span>
+        <h2>Skills &amp; technologies</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group"><h4>Programming Languages</h4><div class="list"><span>Python</span><span>Java</span><span>Kotlin</span><span>JavaScript</span><span>TypeScript</span><span>ReactJS</span></div></div>
+        <div class="skill-group"><h4>Development Tools</h4><div class="list"><span>Git</span><span>GitHub</span><span>Cursor</span><span>IntelliJ</span><span>VS Code</span><span>Eclipse</span></div></div>
+        <div class="skill-group"><h4>Cloud &amp; DevOps</h4><div class="list"><span>CI/CD Pipelines</span><span>AWS Certified Solutions Architect (2021–2024)</span><span>TeamCity</span><span>SonarQube</span></div></div>
+        <div class="skill-group"><h4>Databases</h4><div class="list"><span>SQL</span><span>Database Integration</span></div></div>
+        <div class="skill-group"><h4>Project Management</h4><div class="list"><span>Agile / Scrum</span><span>SAFe Agile</span><span>Jira</span></div></div>
+        <div class="skill-group"><h4>APIs &amp; Integration</h4><div class="list"><span>RESTful APIs</span><span>Third-party API Integration</span><span>XML / JSON Processing</span></div></div>
+        <div class="skill-group"><h4>Testing &amp; Quality</h4><div class="list"><span>Automated Testing</span><span>Playwright</span><span>Unit Testing</span><span>Test Driven Development</span><span>Code Coverage Analysis</span></div></div>
+      </div>
+    </section>
+
+    <!-- EDUCATION + AWARDS -->
+    <section class="block">
+      <div class="two-col">
+        <div>
+          <div class="sec-head">
+            <span class="eyebrow">Foundations</span>
+            <h2>Education &amp; certifications</h2>
+          </div>
+          <div class="panel">
+            <div class="edu-item">
+              <h4>AWS Certified Solutions Architect – Associate</h4>
+              <div class="meta">Sep 2021 – Sep 2024</div>
+            </div>
+            <div class="edu-item">
+              <h4>Bachelor of Computer Science</h4>
+              <div class="meta">First Class · 2003 – 2007</div>
+              <p>Mumbai University, VIT</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="sec-head">
+            <span class="eyebrow">A few proud moments</span>
+            <h2>Awards &amp; recognition</h2>
+          </div>
+          <div class="panel">
+            <div class="award"><p><span class="when">Jun 2026</span>Splose Recognition — for building the WordPress site used for testing; praised for going above and beyond and creating something the whole organisation can use to give customers the best possible experience.</p></div>
+            <div class="award"><p><span class="when">Mar 2021</span>Progress Software Recognition — managed cross-team impediments and delivered critical releases despite organizational challenges.</p></div>
+            <div class="award"><p><span class="when">Jun 2020</span>Progress Software Recognition — implemented a Pre-QA build system enabling quick turnaround for customer hotfixes, reducing time by 40%.</p></div>
+            <div class="award"><p><span class="when">Oct 2014</span>Progress Software Recognition — developed the Suite Installer architecture, reducing testing and release cycles significantly.</p></div>
+            <div class="award"><p><span class="when">Aug 2013</span>Progress Software Recognition — created an innovative XML-based plugin for cross-platform system registry management.</p></div>
+            <div class="award"><p><span class="when">Apr 2008</span>Infosys Best Fresher Award — recognized for a smooth transition into a Unix Administrator role with minimal knowledge-transfer period.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VOLUNTEERING -->
+    <section class="block">
+      <div class="sec-head">
+        <span class="eyebrow">Beyond the keyboard</span>
+        <h2>Giving back</h2>
+      </div>
+      <div class="panel">
+        <div class="vol">
+          <h4>Gov Hack Australia — AWS Specialist</h4>
+          <p>Supporting cloud infrastructure for the event.</p>
+        </div>
+        <div class="vol">
+          <h4>Women in Technology Advocate</h4>
+          <p>Participated in a Microsoft India conference discussing inclusion strategies for Women in STEM.</p>
+        </div>
+        <div class="vol">
+          <h4>Corporate Social Responsibility</h4>
+          <p>Core team member conducting educational sessions for underprivileged children and supporting environmental initiatives.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="closing">
+      <h2>Let's build something together</h2>
+      <p>I'd love to hear what you're working on.</p>
+      <a class="btn" href="mailto:17.priyanka.k@gmail.com">Say hello</a>
+    </section>
+
+  </div>
+
+  <script>
+    document.getElementById("printBtn").addEventListener("click", () => window.print());
+  </script>
+</body>
+</html>
