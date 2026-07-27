@@ -111,65 +111,73 @@
 
   @media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
 
-  /* print → dense, ~2-page PDF */
+  /* print → dense, ~3-page PDF */
   @media print {
-    body { background: #fff; font-size: 9pt; line-height: 1.32; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    @page { margin: 10mm; }
-    .wrap { width: 100%; }
-    .topbar, .closing { display: none !important; }
-    .hero, .pcard, .skill-group, .panel { box-shadow: none !important; }
-
-    /* drop screen-only flourishes to reclaim vertical space */
-    .eyebrow, .sec-head .intro, .hello { display: none !important; }
+    body { background:#fff; font-size:8.8pt; line-height:1.26; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page { margin:10mm; }
+    .wrap { width:100%; }
+    .topbar, .closing { display:none !important; }
+    .hero, .pcard, .skill-group, .panel { box-shadow:none !important; }
+    .eyebrow, .sec-head .intro, .hello { display:none !important; }
 
     /* compact header */
-    .hero { border: 0; border-bottom: 2px solid var(--ink); border-radius: 0; padding: 0 0 10px; }
-    .hero-top { gap: 14px; }
-    .avatar { width: 52px; height: 52px; border-radius: 10px; font-size: 1.2rem; }
-    .hero h1 { font-size: 1.5rem; }
-    .hero .role { font-size: .9rem; margin-top: 2px; }
-    .lead { margin-top: 8px; font-size: .85rem; max-width: none; }
-    .chips { margin-top: 8px; gap: 5px; }
-    .chip { padding: 3px 9px; font-size: .72rem; border-radius: 6px; }
+    .hero { border:0; border-bottom:2px solid var(--ink); border-radius:0; padding:0 0 10px; break-inside:avoid; }
+    .hero-top { gap:14px; }
+    .avatar { width:52px; height:52px; border-radius:10px; font-size:1.2rem; }
+    .hero h1 { font-size:1.5rem; }
+    .hero .role { font-size:.9rem; margin-top:2px; }
+    .lead { margin-top:8px; font-size:.85rem; max-width:none; }
+    .chips { margin-top:8px; gap:5px; }
+    .chip { padding:3px 9px; font-size:.72rem; border-radius:6px; }
 
-    /* compact sections */
-    section.block { margin-top: 12px; }
-    .sec-head { margin-bottom: 6px; }
-    .sec-head h2 { font-size: 1.05rem; }
+    /* sections: keep heading glued to its body, but let content flow */
+    section.block { margin-top:8px; break-inside:auto; }
+    .sec-head { margin-bottom:4px; break-after:avoid; }
+    .sec-head h2 { font-size:1.05rem; }
 
-    /* experience */
-    .timeline { padding-left: 18px; }
-    .timeline::before { left: 5px; }
-    .job { margin-bottom: 9px; break-inside: avoid; }
-    .job::before { left: -18px; width: 11px; height: 11px; border-width: 2px; top: 4px; }
-    .job .co { font-size: 1rem; }
-    .job .loc { font-size: .78rem; }
-    .roles { margin: 5px 0 2px; }
-    .roles .r { font-size: .82rem; }
-    .job ul { margin-top: 5px; gap: 3px; }
-    .job ul li { font-size: .82rem; padding-left: 15px; }
-    .job ul li::before { top: 7px; width: 5px; height: 5px; }
-    .client { margin-bottom: 5px; font-size: .8rem; }
+    /* experience: allow the big job to split; keep title + bullets intact */
+    .timeline { padding-left:18px; }
+    .timeline::before { left:5px; }
+    .job { margin-bottom:6px; break-inside:auto; }   /* was: avoid  <-- main fix */
+    .job .co, .job .roles { break-after:avoid; }
+    .job::before { left:-18px; width:11px; height:11px; border-width:2px; top:4px; }
+    .job .co { font-size:1rem; }
+    .job .loc { font-size:.78rem; }
+    .roles { margin:5px 0 2px; }
+    .roles .r { font-size:.82rem; }
+    .job ul { margin-top:4px; gap:2px; }
+    .job ul li { font-size:.82rem; padding-left:15px; break-inside:avoid; }
+    .job ul li::before { top:7px; width:5px; height:5px; }
+    .client { margin-bottom:5px; font-size:.8rem; }
 
-    /* projects: 3-up, tight */
-    .cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .pcard { padding: 12px; break-inside: avoid; }
-    .pcard h3 { font-size: .95rem; }
-    .pcard p { font-size: .78rem; }
-    .tags { margin-top: 8px; gap: 5px; }
-    .tags span { font-size: .68rem; padding: 2px 8px; }
+    /* projects & "built for fun": cards -> bullet list (PDF only) */
+    .cards { display:block; }
+    .cards .pcard {
+      display:list-item; list-style:disc outside;
+      margin:0 0 5px 16px; padding:0; border:0; background:none; border-radius:0;
+      break-inside:avoid; font-size:.82rem; line-height:1.32;
+    }
+    .cards .pcard h3 { display:inline; font-size:.82rem; font-weight:600; margin:0; }
+    .cards .pcard h3::after { content:" — "; font-weight:400; }
+    .cards .pcard p { display:inline; font-size:0; }                 /* hide long screen text */
+    .cards .pcard p::after { content:attr(data-print); font-size:.82rem; color:#4a423c; }
+    .cards .pcard .tags { display:inline; margin:0; }
+    .cards .pcard .tags::before { content:"  \00B7  "; color:var(--muted); }
+    .cards .pcard .tags span { display:inline; border:0; background:none; padding:0; font-size:.8rem; color:var(--accent-ink); }
+    .cards .pcard .tags span:not(:last-child)::after { content:", "; color:var(--muted); }
 
-    /* skills: 3-up, tight */
-    .skills-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .skill-group { padding: 12px 14px; break-inside: avoid; }
-    .skill-group .list span { font-size: .76rem; padding: 3px 8px; }
+    /* skills: full-width stacked cards (like Education) — no tight-fit gaps */
+    .skills-grid { display:block; }
+    .skill-group { display:block; width:auto; margin:0 0 4px; padding:6px 14px; break-inside:avoid; }
+    .skill-group h4 { font-size:.72rem; margin-bottom:6px; }
+    .skill-group .list span { font-size:.76rem; padding:3px 8px; }
 
-    /* education / awards / volunteering */
-    .panel { padding: 12px 16px; break-inside: avoid; }
-    .two-col { gap: 12px; }
-    .edu-item, .award, .vol { padding: 5px 0; }
-    .edu-item p, .vol p, .award p { font-size: .8rem; }
-    .award .when { font-size: .72rem; padding: 1px 9px; }
+    /* education / awards / volunteering: break by ITEM, not whole panel */
+    .panel { padding:9px 14px; break-inside:auto; }   /* was: avoid  <-- main fix */
+    .two-col { gap:12px; }
+    .edu-item, .award, .vol { padding:4px 0; break-inside:avoid; }
+    .edu-item p, .vol p, .award p { font-size:.8rem; }
+    .award .when { font-size:.72rem; padding:1px 9px; }
   }
 </style>
 </head>
@@ -303,17 +311,17 @@
       <div class="cards">
         <div class="pcard">
           <h3>Enterprise Analytics Integration</h3>
-          <p>Integrated Telerik Analytics APIs into Java applications, implementing RESTful services for real-time data collection and reporting dashboard functionality.</p>
+          <p data-print="Integrated Telerik Analytics APIs into Java apps for real-time data collection and reporting dashboards.">Integrated Telerik Analytics APIs into Java applications, implementing RESTful services for real-time data collection and reporting dashboard functionality.</p>
           <div class="tags"><span>Java</span><span>RESTful APIs</span><span>Analytics</span></div>
         </div>
         <div class="pcard">
           <h3>Multi-Platform Deployment System</h3>
-          <p>Designed an automated deployment solution using Python and shell scripting, supporting Windows, Unix, macOS, and Cloud environments — with a 60% cycle-time reduction.</p>
+          <p data-print="Automated deployment across Windows, Unix, macOS, and Cloud — a 60% cycle-time reduction.">Designed an automated deployment solution using Python and shell scripting, supporting Windows, Unix, macOS, and Cloud environments — with a 60% cycle-time reduction.</p>
           <div class="tags"><span>Python</span><span>Shell</span><span>CI/CD</span></div>
         </div>
         <div class="pcard">
           <h3>Cross-Platform Application Suite</h3>
-          <p>Architected a modular software suite enabling rapid deployment of database connectivity solutions across 13+ platforms with centralized configuration management.</p>
+          <p data-print="Modular suite deploying database connectivity across 13+ platforms with centralized config.">Architected a modular software suite enabling rapid deployment of database connectivity solutions across 13+ platforms with centralized configuration management.</p>
           <div class="tags"><span>Architecture</span><span>Cross-platform</span></div>
         </div>
       </div>
@@ -329,22 +337,22 @@
       <div class="cards">
         <div class="pcard">
           <h3>Movie Explorer</h3>
-          <p>A responsive movie discovery app that lets users search movies, view details, and mark favorites using the TMDB API.</p>
+          <p data-print="Responsive movie discovery app to search, view, and favourite films via the TMDB API.">A responsive movie discovery app that lets users search movies, view details, and mark favorites using the TMDB API.</p>
           <div class="tags"><span>ReactJS</span><span>TMDB API</span></div>
         </div>
         <div class="pcard">
           <h3>Trip Planner with Crew AI</h3>
-          <p>An AI-powered itinerary planner generating daily travel schedules, budgets, activities, safety tips, and packing lists.</p>
+          <p data-print="AI itinerary planner generating daily schedules, budgets, activities, and packing lists.">An AI-powered itinerary planner generating daily travel schedules, budgets, activities, safety tips, and packing lists.</p>
           <div class="tags"><span>Python</span><span>Crew AI</span><span>LangChain</span><span>OpenAI</span></div>
         </div>
         <div class="pcard">
           <h3>Namer App</h3>
-          <p>A fun mobile app that generates creative usernames from random English word combinations, with swipe-to-save.</p>
+          <p data-print="Mobile app generating creative usernames from random word combinations, with swipe-to-save.">A fun mobile app that generates creative usernames from random English word combinations, with swipe-to-save.</p>
           <div class="tags"><span>Flutter</span><span>Dart</span></div>
         </div>
         <div class="pcard">
           <h3>Buy Me a Chai</h3>
-          <p>A blockchain-based tipping platform — letting supporters send a little appreciation, on-chain.</p>
+          <p data-print="Blockchain-based tipping platform letting supporters send appreciation on-chain.">A blockchain-based tipping platform — letting supporters send a little appreciation, on-chain.</p>
           <div class="tags"><span>ReactJS</span><span>Hardhat</span><span>Ethers.js</span><span>Solidity</span></div>
         </div>
       </div>
